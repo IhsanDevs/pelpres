@@ -34,27 +34,23 @@
     </nav>
     <?php endif; ?>
 
-    <div class="container">
+    <div class="container py-4">
 
         <!-- for content page -->
         <?php
-        if (isset($_GET['page']))
-        {
-            $page = $_GET['page'];
-            include __DIR__ . "/../pages/$page.php";
-        }
-        else if (empty($_GET['page']))
-        {
-            include __DIR__ . '/../pages/home.php';
-        }
-        else if(!isset($_GET['page']))
-        {
-            include __DIR__ . '/../pages/home.php';
-        }
-        else
-        {
-            include __DIR__ . '/../pages/404.php';
-        }
+            if (isset($_GET['page'])) {
+              $filename = $_GET['page'];
+
+              if (file_exists(__DIR__ . '/../pages/' . $filename . '.php')) {
+                include(__DIR__ . '/../pages/' . $filename . '.php');
+            } elseif (empty($filename)) {
+                include(__DIR__ . '/../pages/home.php');
+              } else {
+                include(__DIR__ . '/../pages/404.php');
+              }
+            } else {
+                include(__DIR__ . '/../pages/home.php');
+            }
         ?>
     </div>
 

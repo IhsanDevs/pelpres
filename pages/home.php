@@ -1,17 +1,12 @@
 <?php 
-$mahasiswa = [
-    [
-        'id' => 1,
-        'name' => 'Ihsan Devs',
-        'username' => 'ihsan_devs',
-        'nim' => 293248923
-    ]
-]
+$mahasiswa = all("mahasiswa");
 ?>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-12">
         <h1>Daftar Mahasiswa</h1>
+
+        <a href="<?= server() ?>?page=buat_mahasiswa" class="btn btn-primary">Tambah Data Mahasiswa</a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -39,19 +34,5 @@ $mahasiswa = [
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-    <div class="col-md-6">
-        <h1>Tambah Mahasiswa</h1>
-        <form action="index.php?page=store" method="POST">
-            <div class="mb-3">
-                <label for="nama" class="form-label">Nama</label>
-                <input type="text" class="form-control" id="nama" name="nama" required>
-            </div>
-            <div class="mb-3">
-                <label for="nim" class="form-label">NIM</label>
-                <input type="text" class="form-control" id="nim" name="nim" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
     </div>
 </div>
